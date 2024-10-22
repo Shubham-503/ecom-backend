@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import app from "./app.js";
+import app, { redisClient } from "./app.js";
 import config from "./config/index.js";
 
 (async () => {

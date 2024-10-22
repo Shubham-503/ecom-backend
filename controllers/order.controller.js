@@ -1,6 +1,8 @@
+import { validationResult } from "express-validator";
 import Order from "../models/order.schema.js";
 import asyncHandler from "../services/asyncHandler.js";
 import CustomError from "../utils/customError.js";
+import mongoose from "mongoose";
 
 /******************************************************
  * @CREATEORDER
@@ -13,14 +15,24 @@ import CustomError from "../utils/customError.js";
  ******************************************************/
 
 export const createOrder = asyncHandler(async (req, res) => {
-  const { userId, products } = req.body;
-
-  if (!userId || !products || !products.length) {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
     throw new CustomError(
-      "Please provide user ID and at least one product",
+      errors
+        .array()
+        .map((err) => err.msg)
+        .join(", "),
       400
     );
   }
+  const { userId, products } = req.body;
+
+  // if (!userId || !products || !products.length) {
+  //   throw new CustomError(
+  //     "Please provide user ID and at least one product",
+  //     400
+  //   );
+  // }
 
   const order = await Order.create({ userId, products });
 

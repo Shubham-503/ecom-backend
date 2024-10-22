@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import Product from "../models/product.schema.js";
 import asyncHandler from "../services/asyncHandler.js";
 import CustomError from "../utils/customError.js";
@@ -70,7 +71,8 @@ export const createProduct = asyncHandler(async (req, res) => {
 
 export const getProductDetails = asyncHandler(async (req, res) => {
   const { id } = req.params;
-
+  if (!mongoose.isValidObjectId(id))
+    throw new CustomError("Invalid Format", 400);
   const product = await Product.findById(id);
 
   if (!product) {
@@ -95,6 +97,8 @@ export const getProductDetails = asyncHandler(async (req, res) => {
 
 export const updateProductDetails = asyncHandler(async (req, res) => {
   const { id } = req.params;
+  if (!mongoose.isValidObjectId(id))
+    throw new CustomError("Invalid Format", 400);
   const { name, description, price, stock } = req.body;
 
   const product = await Product.findById(id);
@@ -128,7 +132,8 @@ export const updateProductDetails = asyncHandler(async (req, res) => {
 
 export const deleteProduct = asyncHandler(async (req, res) => {
   const { id } = req.params;
-
+  if (!mongoose.isValidObjectId(id))
+    throw new CustomError("Invalid Format", 400);
   const product = await Product.findByIdAndDelete(id);
 
   if (!product) {
