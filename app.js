@@ -1,8 +1,9 @@
 import express from "express";
-
 import cookieParser from "cookie-parser";
 import cors from "cors";
 
+import authRoutes from "./routes/authRoutes.js";
+import productRoutes from "./routes/productRoutes.js";
 const app = express();
 
 app.use(express.json());
@@ -14,5 +15,7 @@ app.use(cookieParser());
 app.get("/", (req, res) => {
   res, json({ message: "home routes" });
 });
+app.use("/api/v1/auth/", authRoutes);
+app.use("/api/v1/", productRoutes);
 
 export default app;
