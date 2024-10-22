@@ -4,6 +4,8 @@ import cors from "cors";
 
 import authRoutes from "./routes/authRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
+import orderRoutes from "./routes/orderRoutes.js";
+
 const app = express();
 
 app.use(express.json());
@@ -17,5 +19,6 @@ app.get("/", (req, res) => {
 });
 app.use("/api/v1/auth/", authRoutes);
 app.use("/api/v1/", productRoutes);
+app.use("/api/v1/", orderRoutes);
 
 export default app;
