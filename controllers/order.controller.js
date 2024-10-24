@@ -7,6 +7,7 @@ import mongoose from "mongoose";
 /******************************************************
  * @CREATEORDER
  * @route http://localhost:5000/api/v1/orders
+ * @method POST
  * @description Controller to create a new order
  * @parameters userId, products (array of objects containing productId and quantity)
  * @returns {object} JSON object containing:
@@ -45,6 +46,7 @@ export const createOrder = asyncHandler(async (req, res) => {
 /******************************************************
  * @GETORDER
  * @route http://localhost:5000/api/v1/orders/:id
+ * @method GET
  * @description Controller to get order details by ID
  * @parameters id (Order ID) - The ID of the order to retrieve
  * @returns {object} JSON object containing:
@@ -70,6 +72,7 @@ export const getOrderDetails = asyncHandler(async (req, res) => {
 /******************************************************
  * @GETUSERORDERS
  * @route http://localhost:5000/api/v1/users/:id/orders
+ * @method GET
  * @description Controller to list all orders for a user by user ID
  * @parameters id (User ID) - The ID of the user whose orders to retrieve
  * @returns {object} JSON object containing:

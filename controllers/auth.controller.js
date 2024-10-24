@@ -6,6 +6,7 @@ import CustomError from "../utils/customError.js";
 /******************************************************
  * @SIGNUP
  * @route http://localhost:5000/api/v1/auth/users
+ * @method POST
  * @description User signUp Controller for creating new user
  * @parameters username, email, password
  * @returns {object} JSON object containing:
@@ -48,6 +49,7 @@ export const signUp = asyncHandler(async (req, res) => {
 /******************************************************
  * @LOGIN
  * @route http://localhost:5000/api/v1/auth/login
+ * @method POST
  * @description User signIn Controller for loging new user
  * @parameters  email, password
  * @returns {object} JSON object containing:
@@ -90,6 +92,7 @@ export const login = asyncHandler(async (req, res) => {
 /******************************************************
  * @LOGOUT
  * @route http://localhost:5000/api/v1/auth/logout
+ * @method GET
  * @description User logout by clearing user cookies
  * @parameters
  * @returns {object} JSON object containing:
@@ -111,6 +114,7 @@ export const logout = asyncHandler(async (_req, res) => {
 /******************************************************
  * @FETCHUSER
  * @route http://localhost:5000/api/v1/auth/users/:id
+ * @method GET
  * @description get user by id
  * @parameters id
  * @returns {object} JSON object containing:
@@ -137,6 +141,7 @@ export const getUserDetails = asyncHandler(async (req, res) => {
 /******************************************************
  * @UPDATEUSER
  * @route http://localhost:5000/api/v1/auth/user/:id
+ * @method PUT
  * @description Controller to update user details (username, email)
  * @parameters id (User ID), username, email (optional fields in the request body)
  * @returns {object} JSON object containing:
@@ -168,6 +173,7 @@ export const updateUserDetails = asyncHandler(async (req, res) => {
 /******************************************************
  * @DELETEUSER
  * @route http://localhost:5000/api/v1/auth/user/:id
+ * @method DELETE
  * @description Controller to delete a user by ID
  * @parameters id (User ID in the request params)
  * @returns {object} JSON object containing:

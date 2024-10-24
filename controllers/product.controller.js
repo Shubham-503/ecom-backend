@@ -6,6 +6,7 @@ import CustomError from "../utils/customError.js";
 /******************************************************
  * @GETPRODUCTS
  * @route http://localhost:5000/api/v1/products
+ * @method GET
  * @description Controller to list all products with pagination
  * @parameters page (optional), limit (optional) - for pagination
  * @returns {object} JSON object containing:
@@ -37,6 +38,7 @@ export const getProducts = asyncHandler(async (req, res) => {
 /******************************************************
  * @CREATEPRODUCT
  * @route http://localhost:5000/api/v1/products
+ * @method POST
  * @description Controller to create a new product
  * @parameters name, description, price, stock
  * @returns {object} JSON object containing:
@@ -62,6 +64,7 @@ export const createProduct = asyncHandler(async (req, res) => {
 /******************************************************
  * @GETPRODUCT
  * @route http://localhost:5000/api/v1/products/:id
+ * @method GET
  * @description Controller to get product details by ID
  * @parameters id (Product ID) - The ID of the product to retrieve
  * @returns {object} JSON object containing:
@@ -88,6 +91,7 @@ export const getProductDetails = asyncHandler(async (req, res) => {
 /******************************************************
  * @UPDATEPRODUCT
  * @route http://localhost:5000/api/v1/products/:id
+ * @method PUT
  * @description Controller to update product details by ID
  * @parameters id (Product ID), name, description, price, stock (optional fields in the request body)
  * @returns {object} JSON object containing:
@@ -123,6 +127,7 @@ export const updateProductDetails = asyncHandler(async (req, res) => {
 /******************************************************
  * @DELETEPRODUCT
  * @route http://localhost:5000/api/v1/products/:id
+ * @method DELETE
  * @description Controller to delete a product by ID
  * @parameters id (Product ID) - The ID of the product to delete
  * @returns {object} JSON object containing:
